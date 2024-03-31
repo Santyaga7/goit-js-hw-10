@@ -11,7 +11,7 @@ const minutesElement =document.querySelector('[data-minutes]');
 const secondsElement =document.querySelector('[data-seconds]');
 startButton.disabled = true;
 
-startButton?.addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     const currentDate = Date.now();
     const selectedDate = userSelectedDate.getTime();
     const ms = selectedDate - currentDate;

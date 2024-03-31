@@ -8,7 +8,7 @@ const delayInput = document.querySelector('input[name="delay"')
 
 
 
-function submitHandle(event) {
+function handleSubmit(event) {
   event.preventDefault();
   const { delay, state } = event.target.elements;
   const delayTime = delay.value;
@@ -52,7 +52,6 @@ function createPromise(delayTime, choice) {
         .catch(() => {
             showNotification(`❌ Rejected promise in ${delay}ms`, '#ef4040');
         });
-
 
 function showNotification(message, backgroundColor) {
     iziToast.show({

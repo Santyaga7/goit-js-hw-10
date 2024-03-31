@@ -4,14 +4,14 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 let userSelectedDate;
-const button = document.querySelector('button');
+const startButton = document.querySelector('button');
 const daysElement =document.querySelector('[data-days]');
 const hoursElement =document.querySelector('[data-hours]');
 const minutesElement =document.querySelector('[data-minutes]');
 const secondsElement =document.querySelector('[data-seconds]');
-button.disabled = true;
+startButton.disabled = true;
 
-button?.addEventListener('click', () => {
+startButton?.addEventListener('click', () => {
     const currentDate = Date.now();
     const selectedDate = userSelectedDate.getTime();
     const ms = selectedDate - currentDate;
@@ -69,9 +69,9 @@ function checkDate(selectedDate) {
             iconColor:'white'
            
         });
-        button.disabled = true;
+        startButton.disabled = true;
     } else {
-        button.disabled = false;
+        startButton.disabled = false;
     }
 }
 
@@ -80,15 +80,18 @@ flatpickr("#datetime-picker", {
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates) {
-        userSelectedDate = selectedDates[0];
-        checkDate(userSelectedDate);
-        console.log(userSelectedDate);
+    onClose: function onCloseDatePicker(selectedDates) {
+    userSelectedDate = Date.parse(selectedDates[0]);
 
-        const ms = userSelectedDate.getTime() - Date.now();
-        const countDown = setTimeout(() => { }, ms);
+  if (userSelectedDate <= Date.now()) {
+    showAlert();
+    setDisabledStartButton();
+  } else {
+    setDisabledStartButton(false);
+  }
+} 
     },
-});
+);
 
 
 

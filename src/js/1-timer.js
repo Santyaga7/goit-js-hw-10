@@ -82,13 +82,19 @@ flatpickr("#datetime-picker", {
     minuteIncrement: 1,
     onClose(selectedDates) {
         userSelectedDate = selectedDates[0];
-        checkDate(userSelectedDate);
-        console.log(userSelectedDate);
-        const ms = userSelectedDate.getTime();
-        document.getElementById("startButton").disabled = ms > new Date().getTime();
+        if (userSelectedDate.getTime() < Date.now()) {
+            iziToast.show({
+                message: "Please choose a date in the future",
+                messageColor: '#fff',
+                backgroundColor: '#ef4040',
+                position: 'topCenter',
+                messageSize: '16px',
+                messageLineHeight: '150%',
+                iconColor: 'white'
+            });
+            startButton.disabled = true;
+        } else {
+            startButton.disabled = false;
+        }
     },
 });
-
-
-
-

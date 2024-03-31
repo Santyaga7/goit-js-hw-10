@@ -4,7 +4,7 @@ import "izitoast/dist/css/iziToast.min.css";
 const submitButton = document.querySelector('button');
 const fulfilled = document.querySelector('input[value="fulfilled"]');
 submitButton?.addEventListener('click', handleSubmit);
-const delayInput = document.querySelector('delayInput[name=delay]');
+const delayInput = document.querySelector('input[name=delay]');
 
 
 function handleSubmit(event) {

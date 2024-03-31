@@ -84,6 +84,8 @@ flatpickr("#datetime-picker", {
         userSelectedDate = selectedDates[0];
         checkDate(userSelectedDate);
         console.log(userSelectedDate);
+        const ms = userSelectedDate.getTime();
+        document.getElementById("startButton").disabled = ms > new Date().getTime();
     },
 });
 

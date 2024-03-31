@@ -80,18 +80,12 @@ flatpickr("#datetime-picker", {
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose: function onCloseDatePicker(selectedDates) {
-    userSelectedDate = Date.parse(selectedDates[0]);
-
-  if (userSelectedDate <= Date.now()) {
-    showAlert();
-    setDisabledStartButton();
-  } else {
-    setDisabledStartButton(false);
-  }
-} 
+    onClose(selectedDates) {
+        userSelectedDate = selectedDates[0];
+        checkDate(userSelectedDate);
+        console.log(userSelectedDate);
     },
-);
+});
 
 
 

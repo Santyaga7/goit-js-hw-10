@@ -1,16 +1,16 @@
 
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-const submit = document.querySelector('button');
+const submitButton = document.querySelector('button');
 const fulfilled = document.querySelector('input[value="fulfilled"]');
-submit?.addEventListener('click', handleSubmit);
-const input = document.querySelector('input[name="delay"')
+submitButton?.addEventListener('click', handleSubmit);
+const delayInput = document.querySelector('input[name="delay]')
 
 
 
 function handleSubmit(event) {
     event.preventDefault();
-    const delay = input.value
+    const delay = delayInput.value;
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
          if (fulfilled.checked) {

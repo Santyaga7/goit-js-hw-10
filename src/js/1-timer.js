@@ -60,8 +60,6 @@ function renderTime(dateObject) {
   secondsNode.textContent = addLeadingZero(seconds);
 }
 
-// HELPERS //
-
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
 }
